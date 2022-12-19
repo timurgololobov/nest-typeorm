@@ -16,13 +16,16 @@ export class Comment {
   @Column({ name: 'text', type: 'text' })
   text!: string;
 
+  @Column({ type: 'int' })
+  postId!: number;
+
+  @Column({ type: 'text', nullable: true })
+  autor!: string;
+
   @ManyToOne(() => Posts)
   @JoinColumn()
   post!: Posts;
 
-  @Column({ name: 'post_id', type: 'int' })
-  postId!: number;
-
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt!: Date;
 }
